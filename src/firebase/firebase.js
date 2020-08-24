@@ -1,35 +1,39 @@
 import * as firebase from 'firebase';
 
 const config = {
-  apiKey: "AIzaSyAEDHEFy9R3k0hKwqtnddM5POM-2V-ShpM",
-  authDomain: "expensise-48540.firebaseapp.com",
-  databaseURL: "https://expensise-48540.firebaseio.com",
-  projectId: "expensise-48540",
-  storageBucket: "expensise-48540.appspot.com",
-  messagingSenderId: "765845536945",
-  appId: "1:765845536945:web:6782aa6f7ccfd06d616290",
-  measurementId: "G-X56NKVZ7MM"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID
 };
 
 firebase.initializeApp(config);
 
 const database = firebase.database();
 
+export { firebase, database as default };
+
+
+
+
+
 
 //child_removed
-database.ref('expenses').on('child_removed', (snapshot) => {
-  console.log(snapshot.key, snapshot.val());
-});
+// database.ref('expenses').on('child_removed', (snapshot) => {
+//   console.log(snapshot.key, snapshot.val());
+// });
 
-//child_changed
-database.ref('expenses').on('child_changed', (snapshot) => {
-  console.log(snapshot.key, snapshot.val());
-});
+// //child_changed
+// database.ref('expenses').on('child_changed', (snapshot) => {
+//   console.log(snapshot.key, snapshot.val());
+// });
 
-//child_added
-database.ref('expenses').on('child_added', (snapshot) => {
-  console.log(snapshot.key, snapshot.val());
-});
+// //child_added
+// database.ref('expenses').on('child_added', (snapshot) => {
+//   console.log(snapshot.key, snapshot.val());
+// });
 
 // database.ref('expenses')
 //   .once('value')
@@ -56,13 +60,6 @@ database.ref('expenses').on('child_added', (snapshot) => {
 //     });
 //     console.log(expenses);
 //   });
-
-
-
-
-
-
-
 
 
 
@@ -148,8 +145,6 @@ database.ref('expenses').on('child_added', (snapshot) => {
 // });
 
 
-
-
   // database.ref('isSingle')
   // .remove()
   // .then(() => {
@@ -157,15 +152,6 @@ database.ref('expenses').on('child_added', (snapshot) => {
   // }).catch((e) => {
   //   console.log('fail')
   // })
-
-
-
-
-
-
-
-
-
 
 
 // database.ref().set('This is my data');
